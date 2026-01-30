@@ -28,18 +28,91 @@
                         <li>
                             <a href="/hero/inicio" class="text-heading hover:underline" aria-current="page">Inicio</a>
                         </li>
-                        <li>
-                            <a href="/empleado/listado" class="text-heading hover:underline">Empleados</a>
+                        <li class="relative group">
+                            <!-- Botón -->
+                            <div class="flex items-center gap-1 cursor-pointer text-heading hover:underline">
+                                Empleados
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+
+                            <!-- Dropdown -->
+                            <div class="absolute left-0 top-full hidden group-hover:block pt-2">
+                                <ul class="bg-white shadow-lg rounded-md w-48 border">
+                                    <li>
+                                        <a href="/empleado/listado"
+                                        class="block px-4 py-2 hover:bg-neutral-secondary-soft">
+                                            Listado
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/empleado/registro"
+                                        class="block px-4 py-2 hover:bg-neutral-secondary-soft">
+                                            Registrar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
-                        <li>
-                            <a href="/categoria/listado" class="text-heading hover:underline">Categorias</a>
+                        <li class="relative group">
+                            <div class="flex items-center gap-1 cursor-pointer text-heading hover:underline">
+                                Categorías
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+
+                            <div class="absolute left-0 top-full hidden group-hover:block pt-2">
+                                <ul class="bg-white shadow-lg rounded-md w-48 border">
+                                    <li>
+                                        <a href="/categoria/listado"
+                                        class="block px-4 py-2 hover:bg-neutral-secondary-soft">
+                                            Listado
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/categoria/registro"
+                                        class="block px-4 py-2 hover:bg-neutral-secondary-soft">
+                                            Registrar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
+
                         <li>
                             <a href="/productos/listado-producto" class="text-heading hover:underline">Productos</a>
                         </li>
-                        <li>
-                            <a href="/cliente/listado" class="text-heading hover:underline">Clientes</a>
+                        <li class="relative group">
+                            <div class="flex items-center gap-1 cursor-pointer text-heading hover:underline">
+                                Clientes
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+
+                            <div class="absolute left-0 top-full hidden group-hover:block pt-2">
+                                <ul class="bg-white shadow-lg rounded-md w-48 border">
+                                    <li>
+                                        <a href="/cliente/listado"
+                                        class="block px-4 py-2 hover:bg-neutral-secondary-soft">
+                                            Listado
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/cliente/registro"
+                                        class="block px-4 py-2 hover:bg-neutral-secondary-soft">
+                                            Registrar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
+
                         <li>
                             <a href="/pedido" class="text-heading hover:underline">Pedidos</a>
                         </li>
