@@ -9,11 +9,5 @@ class Clientes extends Model
 {
     use HasFactory;
     protected $table = 'Clientes';
-    protected $fillable = [
-        'nombre',
-        'apellido',
-        'correo',
-        'estado'
-    ];
     public $timestamps = false;
 }

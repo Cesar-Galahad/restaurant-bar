@@ -24,3 +24,5 @@ Route::get('/', function () {
 Route::get('/cliente/listado',[ClientesController::class,'index']);
 Route::get('/empleado/listado',[EmpleadoController::class,'index']);
 Route::get('/categoria/listado',[CategoriaController::class,'index']);
+Route::get('/cliente/registro',[ClientesController::class,'create']);
+Route::post('/cliente/store',[ClientesController::class,'store']);
