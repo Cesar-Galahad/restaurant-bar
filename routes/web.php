@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\EmpleadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/flow','flowbite');
+//Route::view('/flow','flowbite');
+Route::get('/cliente/listado',[ClientesController::class,'index']);
+Route::get('/empleado/listado',[EmpleadoController::class,'index']);
+
+
