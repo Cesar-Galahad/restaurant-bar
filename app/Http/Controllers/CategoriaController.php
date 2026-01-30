@@ -20,8 +20,7 @@ class CategoriaController extends Controller
     {
         $categoria = new Categoria();
         $categoria->nombre = $req->nombre;
-        $categoria->descripcion = $req->descripcion;
-        $categoria->estado = $req->estado;
+        $categoria->imagen = $req->imagen;
         $categoria->save();
         return redirect('/categoria/listado');
     }
