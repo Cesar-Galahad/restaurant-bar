@@ -12,4 +12,25 @@ class EmpleadoController extends Controller
     $empleados = Empleado::all();
     return view('/Empleado/listado-empleado')-> with('empleados', $empleados);
 }
+
+    public function create()
+    {
+
+        return view('Empleado/registro-empleado');
+    }
+    
+    public function store(Request $req)
+    {
+        //return $req->all();
+        $empleado = new Empleado();
+        $empleado->nombre = $req->nombre;
+        $empleado->apellido = $req->apellido;
+        $empleado->usuario = $req->usuario;
+        $empleado->correo = $req->correo;
+        $empleado->contrasena = $req->contrasena;
+        $empleado->rol = $req->rol;
+        $empleado->estado = $req->estado;
+        $empleado->save();
+        return redirect('/empleado/listado');
+    }
 }

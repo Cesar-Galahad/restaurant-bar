@@ -23,7 +23,7 @@ class ClientesController extends Controller
     
     public function store(Request $req)
     {
-        //return $req->all();
+        
         $cliente = new Clientes();
         $cliente->nombre = $req->nombre;
         $cliente->apellido = $req->apellido;
