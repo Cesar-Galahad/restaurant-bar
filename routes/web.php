@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,4 @@ Route::get('/', function () {
 //Route::view('/flow','flowbite');
 Route::get('/cliente/listado',[ClientesController::class,'index']);
 Route::get('/empleado/listado',[EmpleadoController::class,'index']);
-
-
+Route::get('/categoria/listado',[CategoriaController::class,'index']);

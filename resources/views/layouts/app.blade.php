@@ -29,16 +29,16 @@
                             <a href="/hero/inicio" class="text-heading hover:underline" aria-current="page">Inicio</a>
                         </li>
                         <li>
-                            <a href="/admins/listado" class="text-heading hover:underline">Administradores</a>
+                            <a href="/empleado/listado" class="text-heading hover:underline">Empleados</a>
                         </li>
                         <li>
-                            <a href="/categorias/registro-categoria" class="text-heading hover:underline">Categorias</a>
+                            <a href="/categoria/listado" class="text-heading hover:underline">Categorias</a>
                         </li>
                         <li>
                             <a href="/productos/listado-producto" class="text-heading hover:underline">Productos</a>
                         </li>
                         <li>
-                            <a href="/clientes/registro-cliente" class="text-heading hover:underline">Clientes</a>
+                            <a href="/cliente/listado" class="text-heading hover:underline">Clientes</a>
                         </li>
                         <li>
                             <a href="/pedido" class="text-heading hover:underline">Pedidos</a>
