@@ -33,4 +33,23 @@ class EmpleadoController extends Controller
         $empleado->save();
         return redirect('/empleado/listado');
     }
+    public function edit($id)
+    {
+        $empleados = Empleado::find($id);
+        return view('Empleado/registro-actualizar-empleado')-> with('empleados',$empleados);
+    }
+    public function update(Request $req, $id)
+    {
+        
+        $empleado = Empleado::find($id);
+        $empleado->nombre = $req->nombre;
+        $empleado->apellido = $req->apellido;
+        $empleado->usuario = $req->usuario;
+        $empleado->correo = $req->correo;
+        $empleado->contrasena = $req->contrasena;
+        $empleado->rol = $req->rol;
+        $empleado->estado = $req->estado;
+        $empleado->save();
+        return redirect('/empleado/listado');
+    }
 }

@@ -39,7 +39,7 @@
 
           
           <div class="mt-3">
-            <a href="#"
+            <a href="/empleado/{{ $empleado->id }}/actualizar"
                class="inline-block px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded hover:bg-primary-700">
               Ver perfil
             </a>

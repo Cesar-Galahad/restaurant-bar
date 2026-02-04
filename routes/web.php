@@ -33,3 +33,6 @@ Route::post('/empleado/store',[EmpleadoController::class,'store']);
 
 Route::get('/categoria/registro',[CategoriaController::class,'create']);
 Route::post('/categoria/store',[CategoriaController::class,'store']);
+
+Route::get('/empleado/{id}/actualizar',[EmpleadoController::class,'edit']);
+Route::post('/empleado/{id}/actualizar',[EmpleadoController::class,'update']);
