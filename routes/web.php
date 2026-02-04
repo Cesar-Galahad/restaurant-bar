@@ -36,3 +36,6 @@ Route::post('/categoria/store',[CategoriaController::class,'store']);
 
 Route::get('/empleado/{id}/actualizar',[EmpleadoController::class,'edit']);
 Route::post('/empleado/{id}/actualizar',[EmpleadoController::class,'update']);
+
+Route::get('/cliente/{id}/actualizar',[ClientesController::class,'edit']);
+Route::post('/cliente/{id}/actualizar',[ClientesController::class,'update']);

@@ -49,7 +49,7 @@
               </td>
 
               <td class="px-6 py-4 text-right">
-                <a href="#"
+                <a href="/cliente/{{ $cliente->id }}/actualizar"
                    class="font-medium text-primary-600 hover:underline dark:text-primary-500">
                   Ver perfil
                 </a>

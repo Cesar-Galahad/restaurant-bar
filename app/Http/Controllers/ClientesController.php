@@ -33,4 +33,21 @@ class ClientesController extends Controller
         $cliente->save();
         return redirect('/cliente/listado');
     }
+    public function edit($id)
+    {
+        $clientes = Clientes::find($id);
+        return view('Clientes/registro-actualizar-clientes')-> with('clientes',$clientes);
+    }
+    
+    public function update(Request $req, $id)
+    {
+        $cliente = Clientes::find($id);
+        $cliente->nombre = $req->nombre;
+        $cliente->apellido = $req->apellido;
+        $cliente->correo = $req->correo;
+        $cliente->contrasena = $req->contrasena;
+        $cliente->estado = $req->estado;
+        $cliente->save();
+        return redirect('/cliente/listado');
+    }
 }
