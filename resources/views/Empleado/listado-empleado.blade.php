@@ -45,6 +45,16 @@
             </a>
           </div>
 
+          <div>
+            <form action="/empleado/{{ $empleado->id }}/eliminar" method="POST" class="mt-2">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="inline-block px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700">
+                Eliminar
+              </button>
+            </form>
+          </div>
+
         </div>
       @empty
         <p class="col-span-4 text-gray-500">

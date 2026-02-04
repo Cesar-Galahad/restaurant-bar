@@ -52,4 +52,10 @@ class EmpleadoController extends Controller
         $empleado->save();
         return redirect('/empleado/listado');
     }
+    public function destroy($id)
+    {
+        $empleado = Empleado::find($id);
+        $empleado->delete();
+        return redirect('/empleado/listado');
+    }
 }

@@ -50,4 +50,10 @@ class ClientesController extends Controller
         $cliente->save();
         return redirect('/cliente/listado');
     }
+    public function destroy($id)
+    {
+        $cliente = Clientes::find($id);
+        $cliente->delete();
+        return redirect('/cliente/listado');
+    }
 }

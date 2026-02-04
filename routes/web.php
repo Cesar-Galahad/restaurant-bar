@@ -39,3 +39,8 @@ Route::post('/empleado/{id}/actualizar',[EmpleadoController::class,'update']);
 
 Route::get('/cliente/{id}/actualizar',[ClientesController::class,'edit']);
 Route::post('/cliente/{id}/actualizar',[ClientesController::class,'update']);
+
+Route::delete('/cliente/{id}/eliminar',[ClientesController::class,'destroy']);
+
+Route::delete('/empleado/{id}/eliminar',[EmpleadoController::class,'destroy']);
+

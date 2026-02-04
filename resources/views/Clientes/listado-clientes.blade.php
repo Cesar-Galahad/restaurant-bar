@@ -54,6 +54,14 @@
                   Ver perfil
                 </a>
               </td>
+
+              <td>
+                <form action="/cliente/{{ $cliente->id }}/eliminar" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="text-red-600 hover:text-red-800">Eliminar</button>
+                </form>
+              </td>
             </tr>
           @empty
             <tr>
