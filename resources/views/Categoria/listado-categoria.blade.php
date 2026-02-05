@@ -22,13 +22,30 @@
     <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
 
       @forelse($categorias as $categoria)
-        <a href="#"
-           class="flex items-center rounded-lg border border-gray-200 bg-white px-4 py-3 hover:bg-gray-50
-                  dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white px-4 py-3
+                    dark:border-gray-700 dark:bg-gray-800">
+
           <span class="text-sm font-medium text-gray-900 dark:text-white">
             {{ $categoria->nombre }}
           </span>
-        </a>
+
+          <div class="flex gap-2">
+            <a href="/categoria/{{ $categoria->id }}/actualizar"
+              class="text-sm text-blue-600 hover:underline">
+              Editar
+            </a>
+
+            <form action="/categoria/{{ $categoria->id }}/eliminar" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit"
+                      class="text-sm text-red-600 hover:underline">
+                Eliminar
+              </button>
+            </form>
+          </div>
+
+        </div>
       @empty
         <p class="text-gray-500 dark:text-gray-400">
           No hay categorías registradas.
