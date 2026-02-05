@@ -53,9 +53,5 @@ Route::post('/cliente/{id}/actualizar',[ClientesController::class,'update']);
 //Rutas de eliminacion
 Route::delete('/cliente/{id}/eliminar',[ClientesController::class,'destroy']);
 Route::delete('/empleado/{id}/eliminar',[EmpleadoController::class,'destroy']);
-<<<<<<< HEAD
 
 Route::get('/geolocalizacion', [GeolocalizacionController::class, 'index']);
-=======
-Route::delete('/categoria/{id}/eliminar',[CategoriaController::class,'destroy']);
->>>>>>> fb979fe77a0daf69630e944a6d629ae19a4c67a9
