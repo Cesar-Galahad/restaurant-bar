@@ -34,18 +34,28 @@ Route::post('/empleado/store',[EmpleadoController::class,'store']);
 
 Route::get('/categoria/registro',[CategoriaController::class,'create']);
 Route::post('/categoria/store',[CategoriaController::class,'store']);
+
+//Rutas de actualizacion
+//Categoria
 Route::get('/categoria/{id}/actualizar',[CategoriaController::class,'edit']);
 Route::post('/categoria/{id}/actualizar',[CategoriaController::class,'update']);
-Route::delete('/categoria/{id}/eliminar',[CategoriaController::class,'destroy']);
 
+
+//Empleado
 Route::get('/empleado/{id}/actualizar',[EmpleadoController::class,'edit']);
 Route::post('/empleado/{id}/actualizar',[EmpleadoController::class,'update']);
 
+//Cliente
 Route::get('/cliente/{id}/actualizar',[ClientesController::class,'edit']);
 Route::post('/cliente/{id}/actualizar',[ClientesController::class,'update']);
 
-Route::delete('/cliente/{id}/eliminar',[ClientesController::class,'destroy']);
 
+//Rutas de eliminacion
+Route::delete('/cliente/{id}/eliminar',[ClientesController::class,'destroy']);
 Route::delete('/empleado/{id}/eliminar',[EmpleadoController::class,'destroy']);
+<<<<<<< HEAD
 
 Route::get('/geolocalizacion', [GeolocalizacionController::class, 'index']);
+=======
+Route::delete('/categoria/{id}/eliminar',[CategoriaController::class,'destroy']);
+>>>>>>> fb979fe77a0daf69630e944a6d629ae19a4c67a9
