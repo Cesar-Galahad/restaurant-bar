@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c491b8531eec05ba41a11d9276a5749",
+    "content-hash": "d7b11d892cfade0b69fbf27d4c570756",
     "packages": [
         {
             "name": "brick/math",
@@ -3158,6 +3158,68 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.2"
             },
             "time": "2025-12-14T04:43:48+00:00"
+        },
+        {
+            "name": "skapelapp/ipstack-laravel",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skapelapp/ipstack-laravel.git",
+                "reference": "f65138244cbb77de2b6a57b0cac70630eb137fbd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skapelapp/ipstack-laravel/zipball/f65138244cbb77de2b6a57b0cac70630eb137fbd",
+                "reference": "f65138244cbb77de2b6a57b0cac70630eb137fbd",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^10.0",
+                "php": ">=8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Location": "Skapelapp\\IPStackLaravel\\Facades\\IPStackFacade"
+                    },
+                    "providers": [
+                        "Skapelapp\\IPStackLaravel\\IPStackLaravelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Skapelapp\\IPStackLaravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Skapel",
+                    "email": "hello@skapel.com",
+                    "homepage": "https://skapel.com/packages/ipstack-laravel",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Get information from a visitor's IP address using IPStack and use it in your Laravel project.",
+            "homepage": "https://skapel.com/packages/ipstack-laravel",
+            "keywords": [
+                "geolocation",
+                "goip",
+                "ipstack",
+                "laravel"
+            ],
+            "support": {
+                "docs": "https://skapel.com/docs/ipstack-laravel/introduction",
+                "forum": "https://skapel.com/community",
+                "issues": "https://github.com/skapelapp/ipstack-laravel/issues",
+                "source": "https://github.com/skapelapp/ipstack-laravel"
+            },
+            "time": "2023-12-08T14:10:48+00:00"
         },
         {
             "name": "symfony/console",

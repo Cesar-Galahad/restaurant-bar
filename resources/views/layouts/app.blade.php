@@ -116,6 +116,9 @@
                         <li>
                             <a href="/pedido" class="text-heading hover:underline">Pedidos</a>
                         </li>
+                        <li>
+                            <a href="/geolocalizacion" class="text-heading hover:underline">Localizacion</a>
+                        </li>
                     </ul>
                 </div>
             </div>

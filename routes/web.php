@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\GeolocalizacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,4 @@ Route::delete('/cliente/{id}/eliminar',[ClientesController::class,'destroy']);
 
 Route::delete('/empleado/{id}/eliminar',[EmpleadoController::class,'destroy']);
 
+Route::get('/geolocalizacion', [GeolocalizacionController::class, 'index']);
