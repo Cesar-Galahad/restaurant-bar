@@ -17,7 +17,7 @@
                 </a>
                 <div class="flex items-center space-x-6 rtl:space-x-reverse">
                     <a href="tel:5541251234" class="text-sm  text-body hover:underline">(555) 412-1234</a>
-                    <a href="#" class="text-sm font-medium text-fg-brand hover:underline">Ingresar</a>
+                    <a href="/ingresar" class="text-sm font-medium text-fg-brand hover:underline">Ingresar</a>
                 </div>
             </div>
         </nav>
@@ -26,7 +26,7 @@
                 <div class="flex items-center">
                     <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
                         <li>
-                            <a href="/hero/inicio" class="text-heading hover:underline" aria-current="page">Inicio</a>
+                            <a href="/inicio" class="text-heading hover:underline" aria-current="page">Inicio</a>
                         </li>
                         <li class="relative group">
                             <!-- Botón -->

@@ -22,6 +22,15 @@ Route::get('/', function () {
 });
 
 //Route::view('/flow','flowbite');
+
+Route::get('/inicio', function () {
+    return view('/Inicio/inicio');
+})->name('inicio');
+
+Route::get('/ingresar', function () {
+    return view('/Ingresar/login');
+})->name('ingresar');
+
 Route::get('/cliente/listado',[ClientesController::class,'index']);
 Route::get('/empleado/listado',[EmpleadoController::class,'index']);
 Route::get('/categoria/listado',[CategoriaController::class,'index']);
