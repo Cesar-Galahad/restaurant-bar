@@ -23,15 +23,21 @@
             <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm
                         dark:border-gray-700 dark:bg-gray-800">
 
-                <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-                    <li><strong>IP:</strong> {{ $location['ip'] ?? 'N/A' }}</li>
-                    <li><strong>País:</strong> {{ $location['country_name'] ?? 'N/A' }}</li>
-                    <li><strong>Región:</strong> {{ $location['region_name'] ?? 'N/A' }}</li>
-                    <li><strong>Ciudad:</strong> {{ $location['city'] ?? 'N/A' }}</li>
-                    <li><strong>Código postal:</strong> {{ $location['zip'] ?? 'N/A' }}</li>
-                    <li><strong>Latitud:</strong> {{ $location['latitude'] ?? 'N/A' }}</li>
-                    <li><strong>Longitud:</strong> {{ $location['longitude'] ?? 'N/A' }}</li>
-                </ul>
+                @if($location && is_array($location))
+                    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                        <li><strong>IP:</strong> {{ $location['ip'] ?? 'N/A' }}</li>
+                        <li><strong>País:</strong> {{ $location['country_name'] ?? 'N/A' }}</li>
+                        <li><strong>Región:</strong> {{ $location['region_name'] ?? 'N/A' }}</li>
+                        <li><strong>Ciudad:</strong> {{ $location['city'] ?? 'N/A' }}</li>
+                        <li><strong>Código postal:</strong> {{ $location['zip'] ?? 'N/A' }}</li>
+                        <li><strong>Latitud:</strong> {{ $location['latitude'] ?? 'N/A' }}</li>
+                        <li><strong>Longitud:</strong> {{ $location['longitude'] ?? 'N/A' }}</li>
+                    </ul>
+                @else
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        No se pudo obtener la información de localización.
+                    </p>
+                @endif
 
             </div>
 
@@ -39,7 +45,13 @@
             <div class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm
                         dark:border-gray-700 dark:bg-gray-800">
 
-                <div id="map" class="h-80 w-full rounded-md"></div>
+                @if($location && !empty($location['latitude']) && !empty($location['longitude']))
+                    <div id="map" class="h-80 w-full rounded-md"></div>
+                @else
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Mapa no disponible sin coordenadas válidas.
+                    </p>
+                @endif
 
             </div>
         </div>
@@ -51,12 +63,12 @@
   rel="stylesheet"
   href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 />
-
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+@if($location && !empty($location['latitude']) && !empty($location['longitude']))
 <script>
-    const lat = {{ $location['latitude'] ?? 0 }};
-    const lng = {{ $location['longitude'] ?? 0 }};
+    const lat = {{ $location['latitude'] }};
+    const lng = {{ $location['longitude'] }};
 
     const map = L.map('map').setView([lat, lng], 13);
 
@@ -69,5 +81,7 @@
         .bindPopup('Tu ubicación aproximada')
         .openPopup();
 </script>
+@endif
 @endsection
+
 

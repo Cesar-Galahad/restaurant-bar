@@ -5,6 +5,9 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\GeolocalizacionController;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Clientes;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +33,10 @@ Route::get('/inicio', function () {
 Route::get('/ingresar', function () {
     return view('/Ingresar/login');
 })->name('ingresar');
+
+Route::get('/auth/google', function () {
+    return Socialite::driver('google')->redirect();
+})->name('google.login');
 
 Route::get('/cliente/listado',[ClientesController::class,'index']);
 Route::get('/empleado/listado',[EmpleadoController::class,'index']);
@@ -64,3 +71,35 @@ Route::delete('/cliente/{id}/eliminar',[ClientesController::class,'destroy']);
 Route::delete('/empleado/{id}/eliminar',[EmpleadoController::class,'destroy']);
 
 Route::get('/geolocalizacion', [GeolocalizacionController::class, 'index']);
+
+Route::get('/auth/google/callback', function () {
+    try {
+        $googleUser = Socialite::driver('google')->user();
+
+        // Buscar cliente por correo
+        $cliente = Clientes::where('correo', $googleUser->getEmail())->first();
+
+        // Si no existe, crearlo
+        if (!$cliente) {
+
+            $nombreCompleto = explode(' ', $googleUser->getName(), 2);
+
+            $cliente = Clientes::create([
+                'nombre'     => $nombreCompleto[0],
+                'apellido'   => $nombreCompleto[1] ?? '',
+                'correo'     => $googleUser->getEmail(),
+                'contrasena' => bcrypt(uniqid()), 
+                'estado'     => 1,
+            ]);
+        }
+
+        // Iniciar sesión
+        Auth::login($cliente);
+
+        // Redirigir a ruta
+        return redirect('/inicio');
+
+    } catch (Exception $e) {
+        return redirect('/ingresar');
+    }
+});
