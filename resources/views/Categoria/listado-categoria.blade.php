@@ -25,9 +25,16 @@
         <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white px-4 py-3
                     dark:border-gray-700 dark:bg-gray-800">
 
-          <span class="text-sm font-medium text-gray-900 dark:text-white">
-            {{ $categoria->nombre }}
-          </span>
+          <div class="flex items-center gap-3">
+            <img 
+              src="{{ $categoria->imagen ? asset('storage/'.$categoria->imagen) : asset('img/no-image.png') }}"
+              alt="imagen categoria"
+              class="w-12 h-12 object-cover rounded-lg">
+
+            <span class="text-sm font-medium text-gray-900 dark:text-white">
+              {{ $categoria->nombre }}
+            </span>
+          </div>
 
           <div class="flex gap-2">
             <a href="/categoria/{{ $categoria->id }}/actualizar"

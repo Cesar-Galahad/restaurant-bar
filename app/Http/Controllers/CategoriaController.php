@@ -23,15 +23,19 @@ class CategoriaController extends Controller
         $categoria = new Categoria();
         $categoria->nombre = $req->nombre;
 
-        if ($req->hasFile('imagen')) {
-            $file = $req->file('imagen');
-            $nombreImagen = time().'_'.$file->getClientOriginalName();
-            $file->move(public_path('imagenes/categorias'), $nombreImagen);
-            $categoria->imagen = $nombreImagen;
-        }
+       $categoria->imagen = 'imagenes/categorias/categorias_default.jpg'.$nombreImagen;
 
         $categoria->save();
-        return redirect('/categoria/listado');
+        
+        if ($req -> has ('imagen'))
+            {
+                $imagen = $req -> imagen;
+                $nuevo_nombre = 'categorias_'.$categoria->id .'.jpg';
+                $ruta = $imagen -> storeAs('imagenes/categorias', $nuevo_nombre, 'public');
+                $categoria -> imagen = '/storage'.$ruta;
+                $categoria -> save();
+            }
+            return redirect('/categoria/listado');
     }
 
     public function edit($id)
@@ -45,12 +49,21 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($id);
         $categoria->nombre = $req->nombre;
 
-        if ($req->hasFile('imagen')) {
+        /*if ($req->hasFile('imagen')) {
             $file = $req->file('imagen');
             $nombreImagen = time().'_'.$file->getClientOriginalName();
             $file->move(public_path('imagenes/categorias'), $nombreImagen);
             $categoria->imagen = $nombreImagen;
         }
+            */
+        if ($req -> has ('imagen'))
+            {
+                $imagen = $req -> imagen;
+                $nuevo_nombre = 'categorias_'.$categoria->id .'.jpg';
+                $ruta = $imagen -> storeAs('imagenes/categorias', $nuevo_nombre, 'public');
+                $categoria -> imagen = '/storage'.$ruta;
+                $categoria -> save();
+            }
 
         $categoria->save();
         return redirect('/categoria/listado');

@@ -35,7 +35,7 @@
               <input
                 type="file"
                 name="imagen"
-                accept="image/*"
+                accept="image/jpg, image/jpeg, image/png"
                 required
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer
                        bg-gray-50 dark:text-white dark:bg-gray-700 dark:border-gray-600">

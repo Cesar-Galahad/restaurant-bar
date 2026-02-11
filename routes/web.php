@@ -89,7 +89,7 @@ Route::get('/auth/google/callback', function () {
                 'apellido'   => $nombreCompleto[1] ?? '',
                 'correo'     => $googleUser->getEmail(),
                 'contrasena' => bcrypt(uniqid()), 
-                'estado'     => 1,
+                'estado'     => 'Activo',
             ]);
         }
 

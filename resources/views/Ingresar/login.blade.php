@@ -49,21 +49,18 @@
                       </a>
                   </div>
 
-                  {{-- BOTON LOGIN NORMAL --}}
                   <button type="submit"
                   class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 font-medium
                   rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700">
                       Iniciar Sesión
                   </button>
 
-                  {{-- DIVISOR --}}
                   <div class="flex items-center my-4">
                       <div class="flex-grow border-t border-gray-300"></div>
                       <span class="mx-4 text-sm text-gray-500 dark:text-gray-400">o continúa con</span>
                       <div class="flex-grow border-t border-gray-300"></div>
                   </div>
 
-                  {{-- BOTON GOOGLE SOLO DISEÑO --}}
                   <a href="{{ route('google.login') }}"
                     class="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg
                     px-5 py-2.5 text-sm font-medium text-gray-700 bg-white hover:bg-gray-100
