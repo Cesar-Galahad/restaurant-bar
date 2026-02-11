@@ -31,6 +31,20 @@ class EmpleadoController extends Controller
         $empleado->rol = $req->rol;
         $empleado->estado = $req->estado;
         $empleado->save();
+
+        $empleado->imagen = 'imagenes/empleado/empleado_default.jpg'.$nombreImagen;
+
+        $empleado->save();
+        
+        if ($req -> has ('imagen'))
+            {
+                $imagen = $req -> imagen;
+                $nuevo_nombre = 'empleados_'.$empleado->id .'.jpg';
+                $ruta = $imagen -> storeAs('imagenes/empleado', $nuevo_nombre, 'public');
+                $empleado -> imagen = '/storage'.$ruta;
+                $empleado -> save();
+            }
+            
         return redirect('/empleado/listado');
     }
     public function edit($id)
@@ -50,7 +64,25 @@ class EmpleadoController extends Controller
         $empleado->rol = $req->rol;
         $empleado->estado = $req->estado;
         $empleado->save();
-        return redirect('/empleado/listado');
+        
+        if ($req->hasFile('imagen')) {
+
+        $imagen = $req->file('imagen');
+
+        // nombre automático
+        $nuevo_nombre = 'empleados_'.$empleado->id.'.'.$imagen->extension();
+
+        // guardar en storage/app/public/imagenes/empleado
+        $ruta = $imagen->storeAs('imagenes/empleado', $nuevo_nombre, 'public');
+
+        // guardar ruta en BD
+        $empleado->imagen = 'storage/'.$ruta;
+    }
+
+    // 🔥 SOLO GUARDAMOS UNA VEZ
+    $empleado->save();
+
+    return redirect('/empleado/listado');
     }
     public function destroy($id)
     {

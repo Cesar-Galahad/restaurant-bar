@@ -22,10 +22,10 @@
         <div class="text-center text-gray-500 dark:text-gray-400">
 
           
-          <img
-            class="mx-auto mb-4 w-36 h-36 rounded-full"
-            src="https://ui-avatars.com/api/?name={{ urlencode($empleado->nombre.' '.$empleado->apellido) }}&background=0D8ABC&color=fff"
-            alt="Avatar">
+         <img
+          src="{{ isset($empleado->imagen) ? asset($empleado->imagen) : asset('img/no-image.png') }}"
+          class="mx-auto mb-4 w-48 h-48 rounded-full object-cover">
+
 
          
           <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
