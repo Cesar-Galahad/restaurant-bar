@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\GeolocalizacionController;
+use App\Http\Controllers\ProductosController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Clientes;
@@ -50,6 +51,7 @@ Route::post('/empleado/store',[EmpleadoController::class,'store']);
 
 Route::get('/categoria/registro',[CategoriaController::class,'create']);
 Route::post('/categoria/store',[CategoriaController::class,'store']);
+
 
 //Rutas de actualizacion
 //Categoria
@@ -103,3 +105,10 @@ Route::get('/auth/google/callback', function () {
         return redirect('/ingresar');
     }
 });
+
+Route::get('/producto/listado', [ProductosController::class, 'index']);
+Route::get('/producto/registro', [ProductosController::class, 'create']);
+Route::post('/producto/guardar', [ProductosController::class, 'store']);
+Route::get('/producto/editar/{id}', [ProductosController::class, 'edit']);
+Route::put('/producto/actualizar/{id}', [ProductosController::class, 'update']);
+Route::delete('/producto/eliminar/{id}', [ProductosController::class, 'destroy']);

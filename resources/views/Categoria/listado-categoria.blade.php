@@ -3,64 +3,68 @@
 @section('titulo','Listado categorias')
 
 @section('contenido')
-<section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-16">
-  <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 
-    <div class="mb-4 flex items-center justify-between gap-4 md:mb-8">
-      <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
-        Explora nuestra experiencia
+    <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+        Nuestras Categorías
       </h2>
-
-      <a href="#" class="flex items-center text-base font-medium text-primary-700 hover:underline dark:text-primary-500">
-        Ver menú completo
-        <svg class="ms-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
-        </svg>
-      </a>
+      <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+        Explora todas las categorías disponibles en el sistema
+      </p>
     </div>
 
-    <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+    <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
 
       @forelse($categorias as $categoria)
-        <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white px-4 py-3
-                    dark:border-gray-700 dark:bg-gray-800">
+        <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+          
+          <img 
+            class="w-full sm:w-48 h-48 object-cover rounded-lg sm:rounded-none sm:rounded-l-lg"
+            src="{{ $categoria->imagen ? asset('storage/'.$categoria->imagen) : asset('img/no-image.png') }}"
+            alt="Imagen categoría">
 
-          <div class="flex items-center gap-3">
-            <img 
-              src="{{ $categoria->imagen ? asset('storage/'.$categoria->imagen) : asset('img/no-image.png') }}"
-              alt="imagen categoria"
-              class="w-12 h-12 object-cover rounded-lg">
-
-            <span class="text-sm font-medium text-gray-900 dark:text-white">
+          <div class="p-5 w-full">
+            <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
               {{ $categoria->nombre }}
+            </h3>
+
+            <span class="text-gray-500 dark:text-gray-400">
+              Categoría ID: {{ $categoria->id }}
             </span>
-          </div>
 
-          <div class="flex gap-2">
-            <a href="/categoria/{{ $categoria->id }}/actualizar"
-              class="text-sm text-blue-600 hover:underline">
-              Editar
-            </a>
+            <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+              Gestiona esta categoría desde las opciones disponibles.
+            </p>
 
-            <form action="/categoria/{{ $categoria->id }}/eliminar" method="POST">
-              @csrf
-              @method('DELETE')
-              <button type="submit"
-                      class="text-sm text-red-600 hover:underline">
-                Eliminar
-              </button>
-            </form>
+            <div class="flex gap-4">
+              <a href="/categoria/{{ $categoria->id }}/actualizar"
+                class="text-sm font-medium text-blue-600 hover:underline">
+                Editar
+              </a>
+
+              <form action="/categoria/{{ $categoria->id }}/eliminar" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                        class="text-sm font-medium text-red-600 hover:underline">
+                  Eliminar
+                </button>
+              </form>
+            </div>
           </div>
 
         </div>
       @empty
-        <p class="text-gray-500 dark:text-gray-400">
-          No hay categorías registradas.
-        </p>
+        <div class="col-span-2 text-center">
+          <p class="text-gray-500 dark:text-gray-400">
+            No hay categorías registradas.
+          </p>
+        </div>
       @endforelse
 
     </div>
   </div>
 </section>
-
 @endsection

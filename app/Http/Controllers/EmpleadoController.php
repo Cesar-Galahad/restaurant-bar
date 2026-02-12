@@ -68,18 +68,12 @@ class EmpleadoController extends Controller
         if ($req->hasFile('imagen')) {
 
         $imagen = $req->file('imagen');
-
-        // nombre automático
         $nuevo_nombre = 'empleados_'.$empleado->id.'.'.$imagen->extension();
-
-        // guardar en storage/app/public/imagenes/empleado
         $ruta = $imagen->storeAs('imagenes/empleado', $nuevo_nombre, 'public');
-
-        // guardar ruta en BD
         $empleado->imagen = 'storage/'.$ruta;
     }
 
-    // 🔥 SOLO GUARDAMOS UNA VEZ
+
     $empleado->save();
 
     return redirect('/empleado/listado');

@@ -83,8 +83,33 @@
                             </div>
                         </li>
 
-                        <li>
-                            <a href="/productos/listado-producto" class="text-heading hover:underline">Productos</a>
+                        <li class="relative group">
+                            <!-- Botón -->
+                            <div class="flex items-center gap-1 cursor-pointer text-heading hover:underline">
+                                Productos
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+
+                            <!-- Dropdown -->
+                            <div class="absolute left-0 top-full hidden group-hover:block pt-2">
+                                <ul class="bg-white shadow-lg rounded-md w-48 border">
+                                    <li>
+                                        <a href="/producto/listado"
+                                        class="block px-4 py-2 hover:bg-neutral-secondary-soft">
+                                            Listado
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/producto/registro"
+                                        class="block px-4 py-2 hover:bg-neutral-secondary-soft">
+                                            Registrar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="relative group">
                             <div class="flex items-center gap-1 cursor-pointer text-heading hover:underline">

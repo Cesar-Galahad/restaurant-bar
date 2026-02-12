@@ -19,24 +19,24 @@ class CategoriaController extends Controller
     }
 
     public function store(Request $req)
-    {
-        $categoria = new Categoria();
-        $categoria->nombre = $req->nombre;
+{
+    $categoria = new Categoria();
+    $categoria->nombre = $req->nombre;
+    $categoria->imagen = 'imagenes/categorias/categorias_default.jpg';
+    $categoria->save();
+    if ($req->hasFile('imagen')) {
 
-       $categoria->imagen = 'imagenes/categorias/categorias_default.jpg'.$nombreImagen;
+        $imagen = $req->file('imagen');
+        $nuevo_nombre = 'categorias_'.$categoria->id.'.jpg';
 
+        $ruta = $imagen->storeAs('imagenes/categorias',$nuevo_nombre,'public');
+        $categoria->imagen = $ruta;
         $categoria->save();
-        
-        if ($req -> has ('imagen'))
-            {
-                $imagen = $req -> imagen;
-                $nuevo_nombre = 'categorias_'.$categoria->id .'.jpg';
-                $ruta = $imagen -> storeAs('imagenes/categorias', $nuevo_nombre, 'public');
-                $categoria -> imagen = '/storage'.$ruta;
-                $categoria -> save();
-            }
-            return redirect('/categoria/listado');
     }
+
+    return redirect('/categoria/listado');
+}
+
 
     public function edit($id)
     {
@@ -45,29 +45,29 @@ class CategoriaController extends Controller
     }
 
     public function update(Request $req, $id)
-    {
-        $categoria = Categoria::find($id);
-        $categoria->nombre = $req->nombre;
+{
+    $categoria = Categoria::find($id);
+    $categoria->nombre = $req->nombre;
 
-        /*if ($req->hasFile('imagen')) {
-            $file = $req->file('imagen');
-            $nombreImagen = time().'_'.$file->getClientOriginalName();
-            $file->move(public_path('imagenes/categorias'), $nombreImagen);
-            $categoria->imagen = $nombreImagen;
-        }
-            */
-        if ($req -> has ('imagen'))
-            {
-                $imagen = $req -> imagen;
-                $nuevo_nombre = 'categorias_'.$categoria->id .'.jpg';
-                $ruta = $imagen -> storeAs('imagenes/categorias', $nuevo_nombre, 'public');
-                $categoria -> imagen = '/storage'.$ruta;
-                $categoria -> save();
-            }
+    if ($req->hasFile('imagen')) {
 
-        $categoria->save();
-        return redirect('/categoria/listado');
+        $imagen = $req->file('imagen');
+        $nuevo_nombre = 'categorias_'.$categoria->id.'.jpg';
+
+        $ruta = $imagen->storeAs(
+            'imagenes/categorias',
+            $nuevo_nombre,
+            'public'
+        );
+
+        $categoria->imagen = $ruta;
     }
+
+    $categoria->save();
+
+    return redirect('/categoria/listado');
+}
+
 
     public function destroy($id)
     {
