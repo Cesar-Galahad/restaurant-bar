@@ -8,6 +8,7 @@
 </head>
 <body>
     <!-- contenido estatico -->
+    @if (!isset($noNavbar))
     <header class="fixed w-full z-20 top-0 start-0">
         <nav class="bg-neutral-primary">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
@@ -17,7 +18,24 @@
                 </a>
                 <div class="flex items-center space-x-6 rtl:space-x-reverse">
                     <a href="tel:5541251234" class="text-sm  text-body hover:underline">(555) 412-1234</a>
-                    <a href="/ingresar" class="text-sm font-medium text-fg-brand hover:underline">Ingresar</a>
+                                        @auth('empleado')
+                    <form method="POST" action="{{ route('empleado.logout') }}">
+                        @csrf
+                        <button 
+                            type="submit"
+                            class="text-sm font-medium px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition duration-200"
+                        >
+                            Cerrar sesión
+                        </button>
+                    </form>
+                    @endauth
+
+                    @guest('empleado')
+                    <a href="/ingresar" class="text-sm font-medium text-fg-brand hover:underline">
+                        Ingresar
+                    </a>
+                    @endguest
+
                 </div>
             </div>
         </nav>
@@ -47,12 +65,16 @@
                                             Listado
                                         </a>
                                     </li>
+                                    @auth('empleado')
+                                    @if(auth()->guard('empleado')->user()->rol === 'Administrador')
                                     <li>
                                         <a href="/empleado/registro"
                                         class="block px-4 py-2 hover:bg-neutral-secondary-soft">
                                             Registrar
                                         </a>
                                     </li>
+                                    @endif
+                                    @endauth
                                 </ul>
                             </div>
                         </li>
@@ -73,12 +95,16 @@
                                             Listado
                                         </a>
                                     </li>
+                                    @auth('empleado')
+                                    @if(auth()->guard('empleado')->user()->rol === 'Administrador')
                                     <li>
                                         <a href="/categoria/registro"
                                         class="block px-4 py-2 hover:bg-neutral-secondary-soft">
                                             Registrar
                                         </a>
                                     </li>
+                                    @endif
+                                    @endauth
                                 </ul>
                             </div>
                         </li>
@@ -102,12 +128,16 @@
                                             Listado
                                         </a>
                                     </li>
+                                    @auth('empleado')
+                                    @if(auth()->guard('empleado')->user()->rol === 'Administrador')
                                     <li>
                                         <a href="/producto/registro"
                                         class="block px-4 py-2 hover:bg-neutral-secondary-soft">
                                             Registrar
                                         </a>
                                     </li>
+                                    @endif
+                                    @endauth
                                 </ul>
                             </div>
                         </li>
@@ -128,12 +158,16 @@
                                             Listado
                                         </a>
                                     </li>
+                                    @auth('empleado')
+                                    @if(auth()->guard('empleado')->user()->rol === 'Administrador')
                                     <li>
                                         <a href="/cliente/registro"
                                         class="block px-4 py-2 hover:bg-neutral-secondary-soft">
                                             Registrar
                                         </a>
                                     </li>
+                                    @endif
+                                    @endauth
                                 </ul>
                             </div>
                         </li>
@@ -149,8 +183,9 @@
             </div>
         </nav>
     </header>
+     @endif
     <!-- contenido dinamico -->
-    <main class="pt-32">
+    <main class="{{ isset($noNavbar) ? '' : 'pt-32' }}">
         @yield('contenido')
     </main>
 
