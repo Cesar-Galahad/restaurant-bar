@@ -38,6 +38,8 @@
               Gestiona esta categoría desde las opciones disponibles.
             </p>
 
+            @auth('empleado')
+            @if(auth()->guard('empleado')->user()->rol === 'Administrador')
             <div class="flex gap-4">
               <a href="/categoria/{{ $categoria->id }}/actualizar"
                 class="text-sm font-medium text-blue-600 hover:underline">
@@ -53,6 +55,9 @@
                 </button>
               </form>
             </div>
+            @endif
+            @endauth
+
           </div>
 
         </div>

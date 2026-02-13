@@ -24,7 +24,12 @@
             <th class="px-6 py-3">Cliente</th>
             <th class="px-6 py-3">Correo electrónico</th>
             <th class="px-6 py-3">Estado</th>
+            @auth('empleado')
+              @if(auth()->guard('empleado')->user()->rol === 'Administrador')
+
             <th class="px-6 py-3 text-right">Acción</th>
+             @endif
+              @endauth
           </tr>
         </thead>
 
@@ -48,9 +53,12 @@
                 </span>
               </td>
 
+              @auth('empleado')
+              @if(auth()->guard('empleado')->user()->rol === 'Administrador')
+
               <td class="px-6 py-4 text-right">
                 <a href="/cliente/{{ $cliente->id }}/actualizar"
-                   class="font-medium text-primary-600 hover:underline dark:text-primary-500">
+                  class="font-medium text-primary-600 hover:underline dark:text-primary-500">
                   Ver perfil
                 </a>
               </td>
@@ -62,6 +70,10 @@
                   <button type="submit" class="text-red-600 hover:text-red-800">Eliminar</button>
                 </form>
               </td>
+
+              @endif
+              @endauth
+
             </tr>
           @empty
             <tr>

@@ -47,19 +47,21 @@
                 Existencia: {{ $producto->existencia }}
             </div>
 
-            {{-- BOTONES ADMIN --}}
+            @auth('empleado')
+            @if(auth()->guard('empleado')->user()->rol === 'Administrador')
+
             <div class="flex gap-2 mt-4">
 
                 <!-- ACTUALIZAR -->
                 <a href="{{ url('/producto/editar/'.$producto->id) }}"
-                   class="px-3 py-2 text-sm text-white bg-yellow-500 hover:bg-yellow-600 rounded-base">
+                class="px-3 py-2 text-sm text-white bg-yellow-500 hover:bg-yellow-600 rounded-base">
                     Actualizar
                 </a>
 
                 <!-- ELIMINAR -->
                 <form action="{{ url('/producto/eliminar/'.$producto->id) }}" 
-                      method="POST"
-                      onsubmit="return confirm('¿Seguro que deseas eliminar este producto?')">
+                    method="POST"
+                    onsubmit="return confirm('¿Seguro que deseas eliminar este producto?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit"
@@ -69,6 +71,10 @@
                 </form>
 
             </div>
+
+            @endif
+            @endauth
+
 
         </div>
     </div>
